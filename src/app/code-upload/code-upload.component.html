@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="code-upload.component.css" />
+<div class="container col-12 col-sm-8 col-md-6 col-lg-4">
+  <div class="title text-center display-4 my-5">Kódfeltöltés</div>
+  <div class="content">
+    <form action="">
+      <label for="emailAdress" class="form-label">E-mail cím:</label>
+      <div class="input-group input-group-default">
+        <span class="input-group-text" id="emailAdress">@</span>
+        <input
+          [(ngModel)]="model.emailAdress"
+          name="email"
+          type="email"
+          class="form-control"
+          placeholder="{{ template.emailAdress }}"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-lg"
+        />
+      </div>
+      <label for="promotionCode" class="form-label mt-3">Kód:</label>
+      <div class="input-group input-group-default">
+        <span class="input-group-text" id="promotionCode">#</span>
+        <input
+          [(ngModel)]="model.code"
+          name="code"
+          type="text"
+          class="form-control"
+          placeholder="{{ template.code }}"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-lg"
+        />
+      </div>
+      <label for="datetimepicker" class="form-label mt-3"
+        >Vásárlás időpontja:</label
+      >
+      <div class="row">
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              [(ngModel)]="mdateDay"
+              type="date"
+              value="2022-08-25"
+              id="datetimepicker"
+              class="form-control"
+              min="2022-07-01"
+              max="2022-08-31"
+            />
+            <input
+              [(ngModel)]="mdateHour"
+              name="mdateHour"
+              type="number"
+              class="form-control"
+              min="0"
+              max="23"
+            />
+            <input
+              [(ngModel)]="mdateMin"
+              name="mdateMin"
+              value="dateMin"
+              type="number"
+              class="form-control"
+              min="0"
+              max="59"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="validationError" *ngIf="error">Hibás adat(ok)!</div>
+
+      <div class="mt-5 text-center">
+        <input
+          type="submit"
+          class="btn btn-primary mx-auto"
+          value="Kódfeltöltés"
+          (click)="submitForm()"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+
+<div>{{ template.date }}</div>
+<div>{{ mdateDay.value }} {{ mdateHour }} : {{ mdateMin }}</div>

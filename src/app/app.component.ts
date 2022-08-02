@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CodeUploadComponent } from './code-upload/code-upload.component';
 
 @Component({
   selector: 'app-root',

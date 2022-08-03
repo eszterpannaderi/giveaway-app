@@ -10,6 +10,7 @@ export class UserRegistrationComponent implements OnInit {
   
   @Input() email = '';
   @Input() registrationNeeded = true;
+ 
   error = false
   username=''
   accepted=false;
@@ -41,7 +42,9 @@ export class UserRegistrationComponent implements OnInit {
     if(this.error)return
     else{
       this.registrationNeeded=false;
+      //küldés az apinak
       alert("regisztrált")
+      location.reload();
     }
   }
 

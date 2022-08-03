@@ -76,6 +76,7 @@ mins:any =[]
       this.error=false;
       this.model.date=this.mdateDay+' '+this.mdateHour+':'+this.mdateMin
       //küldés az apinak
+      alert("Nem található felhasználó ezzel az emaillel")
       this.registrationNeeded=true
       }
   }
@@ -86,35 +87,33 @@ mins:any =[]
     this.loop = new Date(newDate);
     this.dates.push(this.loop.toISOString().slice(0, 10).toString())
     }
-    this.fillSelect("#mdateDay", this.dates)
+   
   }
 
   fillHoursArray(){
     for(let i=0 ;i<24; i++) {
     this.hours.push(String(i).padStart(2, '0'))
     }
-    this.fillSelect("#mdateHour", this.hours)
+    
   }
 
   fillMinsArray(){
     for(let i=0 ;i<60; i++) {
     this.mins.push(String(i).padStart(2, '0'))
     }
-    this.fillSelect("#mdateMin", this.mins)
+    
   }
 
-  fillSelect(selectId :string, arr:any ){
-    const select = document.querySelector(selectId);
-    for (let i = 0; i < arr.length; i++) {
-      let opt = document.createElement("option");
-      opt.value = arr[i]; //or i, depending on what you need to do
-      opt.innerHTML = arr[i]; 
-      select?.append(opt); 
-      //Chuck it into the dom here if you want
-  }
-}
-
-  
+//   fillSelect(selectId :string, arr:any ){
+//     const select = document.querySelector(selectId);
+//     for (let i = 0; i < arr.length; i++) {
+//       let opt = document.createElement("option");
+//       opt.value = arr[i]; 
+//       opt.innerHTML = arr[i]; 
+//       select?.append(opt); 
+      
+//   }
+// }
 
 }
 

@@ -8,7 +8,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class CodeUploadComponent implements OnInit {
    
-  
+dates: any = []
+hours:any = []
+mins:any =[]
+
+ start:Date = new Date("07/01/2022");
+ end:Date = new Date("08/31/2022");
+ loop:Date = new Date(this.start);
 
   error = false;
 
@@ -38,7 +44,10 @@ export class CodeUploadComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.template={ emailAdress:"a@a.a", code:"Q1W2E3R4", date:this.dateDay+' '+this.dateHour+":"+this.dateMin}
+    this.template={ emailAdress:"a@a.a", code:"Q1W2E3R4", date:this.dateDay+' '+this.dateHour+":"+this.dateMin};
+    this.fillDateArray();
+    this.fillHoursArray();
+    this.fillMinsArray()
   }
 
   validateEmail(email : any){
@@ -60,6 +69,35 @@ export class CodeUploadComponent implements OnInit {
     if(this.error){return}
     else{alert("ok")}
   }
+
+  fillDateArray(){
+    while(this.loop <= this.end) {
+    let newDate = this.loop.setDate(this.loop.getDate() + 1);
+    this.loop = new Date(newDate);
+    this.dates.push(this.loop.toISOString().slice(0, 10).toString())
+  }
+  //alert(this.dates[61])
+  }
+
+  fillHoursArray(){
+    let i = 1
+    while( i < 24) {
+    this.hours.push(String(i).padStart(2, '0'))
+    i++;
+  }
+  //alert(this.hours[22])
+  }
+
+  fillMinsArray(){
+    let i = 1
+    while( i < 61) {
+    this.mins.push(String(i).padStart(2, '0'))
+    i++;
+  }
+  //alert(this.mins[0])
+  }
+
+  
 
 }
 

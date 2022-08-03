@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UserRegistrationComponent } from '../user-registration/user-registration.component';
 
 @Component({
   selector: 'app-code-upload',
@@ -7,7 +8,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./code-upload.component.css']
 })
 export class CodeUploadComponent implements OnInit {
-   
+registrationNeeded=false;
+
 dates: any = []
 hours:any = []
 mins:any =[]
@@ -24,13 +26,6 @@ mins:any =[]
   mdateMin: any= ''
 
 
-  template: UploadInterface= {
-    emailAdress: '',
-    code:'',
-    date:''
-  
-  };
-
   model: UploadInterface= {
     emailAdress: '',
     code:'',
@@ -38,10 +33,11 @@ mins:any =[]
   };
 
   
-  constructor() { }
+  constructor() {
+    this.model.emailAdress="a@a.a"
+   }
 
   ngOnInit(): void {
-    this.template={ emailAdress:"a@a.a", code:"Q1W2E3R4", date:''};
     this.fillDatesArray();
     this.fillHoursArray();
     this.fillMinsArray();
@@ -79,8 +75,8 @@ mins:any =[]
     else{
       this.error=false;
       this.model.date=this.mdateDay+' '+this.mdateHour+':'+this.mdateMin
-      alert(this.model.date)
       //küldés az apinak
+      this.registrationNeeded=true
       }
   }
 
@@ -113,7 +109,8 @@ mins:any =[]
       let opt = document.createElement("option");
       opt.value = arr[i]; //or i, depending on what you need to do
       opt.innerHTML = arr[i]; 
-      select?.append(opt); //Chuck it into the dom here if you want
+      select?.append(opt); 
+      //Chuck it into the dom here if you want
   }
 }
 

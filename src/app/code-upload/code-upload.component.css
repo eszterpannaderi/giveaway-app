@@ -18,3 +18,10 @@
 .input-group-text{
     width:2.5rem;
 }
+.dates{
+    display:flex;
+    justify-content: space-around;
+}
+.form-control{
+    text-align: center;
+}

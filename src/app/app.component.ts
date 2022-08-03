@@ -9,5 +9,4 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 })
 export class AppComponent {
   title = 'giveaway-app';
-  registrationNeeded = true;
 }

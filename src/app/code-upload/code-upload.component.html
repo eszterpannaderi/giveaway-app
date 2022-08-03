@@ -35,32 +35,13 @@
       <div class="row">
         <div class="form-group">
           <div class="input-group">
-            <input
-              [(ngModel)]="mdateDay"
-              type="date"
-              value="2022-08-25"
-              id="datetimepicker"
-              class="form-control"
-              min="2022-07-01"
-              max="2022-08-31"
-            />
-            <input
-              [(ngModel)]="mdateHour"
+            <select name="mdateMin" id="mdateMin" class="form-control"></select>
+            <select
               name="mdateHour"
-              type="number"
+              id="mdateHour"
               class="form-control"
-              min="0"
-              max="23"
-            />
-            <input
-              [(ngModel)]="mdateMin"
-              name="mdateMin"
-              value="dateMin"
-              type="number"
-              class="form-control"
-              min="0"
-              max="59"
-            />
+            ></select>
+            <select name="mdateMin" id="mdateMin" class="form-control"></select>
           </div>
         </div>
       </div>

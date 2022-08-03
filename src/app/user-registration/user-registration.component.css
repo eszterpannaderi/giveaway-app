@@ -1,6 +1,6 @@
 .container{
-    background-color: rgb(64, 69, 87);
-    color:white;
+    background-color: rgb(180, 223, 204);
+    color:black;
     padding-bottom:5rem;
     padding-top:3rem;
     padding-left:3rem;
@@ -13,7 +13,8 @@
     height:3rem;
     padding-top:20px;
     text-align:center;
-    color:rgb(245, 158, 158);
+    color:rgb(197, 47, 47);
+    font-weight:bold;
 }
 .input-group-text{
     width:2.5rem;

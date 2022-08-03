@@ -5,11 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CodeUploadComponent } from './code-upload/code-upload.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CodeUploadComponent
+    CodeUploadComponent,
+    UserRegistrationComponent
   ],
   imports: [
     BrowserModule,

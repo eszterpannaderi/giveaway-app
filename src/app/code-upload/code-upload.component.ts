@@ -19,13 +19,10 @@ mins:any =[]
   error = false;
 
   d: Date= new Date()
-  dateDay: any=this.d.toISOString().slice(0, 10).toString();
-  dateHour:any = String(this.d.getHours()).padStart(2, '0')
-  dateMin: any= String(this.d.getMinutes()).padStart(2, '0')
-
-  mdateDay: any=''
+  mdateDay: any=this.d.toISOString().slice(0, 10).toString();
   mdateHour:any = ''
   mdateMin: any= ''
+
 
   template: UploadInterface= {
     emailAdress: '',
@@ -44,10 +41,12 @@ mins:any =[]
   constructor() { }
 
   ngOnInit(): void {
-    this.template={ emailAdress:"a@a.a", code:"Q1W2E3R4", date:this.dateDay+' '+this.dateHour+":"+this.dateMin};
-    this.fillDateArray();
+    this.template={ emailAdress:"a@a.a", code:"Q1W2E3R4", date:''};
+    this.fillDatesArray();
     this.fillHoursArray();
-    this.fillMinsArray()
+    this.fillMinsArray();
+    this.model={emailAdress:'', code:'', date:this.mdateDay+' '+this.mdateHour+':'+this.mdateMin}
+    
   }
 
   validateEmail(email : any){
@@ -63,39 +62,60 @@ mins:any =[]
       return false}
   }
 
-  submitForm() {
-    this.validateEmail(this.model.emailAdress);
-    this.validateCode(this.model.code)
-    if(this.error){return}
-    else{alert("ok")}
+  validateDate(date : any){
+    if(date) return;
+    else {
+      this.error = true;
+      return false}
   }
 
-  fillDateArray(){
-    while(this.loop <= this.end) {
+  submitForm() {
+    this.error=false
+    this.validateEmail(this.model.emailAdress);
+    this.validateCode(this.model.code)
+    this.validateDate(this.mdateHour)
+    this.validateDate(this.mdateMin)
+    if(this.error){return}
+    else{
+      this.error=false;
+      this.model.date=this.mdateDay+' '+this.mdateHour+':'+this.mdateMin
+      alert(this.model.date)
+      //küldés az apinak
+      }
+  }
+
+  fillDatesArray(){
+    while(this.loop <= this.end && this.loop < this.d) {
     let newDate = this.loop.setDate(this.loop.getDate() + 1);
     this.loop = new Date(newDate);
     this.dates.push(this.loop.toISOString().slice(0, 10).toString())
-  }
-  //alert(this.dates[61])
+    }
+    this.fillSelect("#mdateDay", this.dates)
   }
 
   fillHoursArray(){
-    let i = 1
-    while( i < 24) {
+    for(let i=0 ;i<24; i++) {
     this.hours.push(String(i).padStart(2, '0'))
-    i++;
-  }
-  //alert(this.hours[22])
+    }
+    this.fillSelect("#mdateHour", this.hours)
   }
 
   fillMinsArray(){
-    let i = 1
-    while( i < 61) {
+    for(let i=0 ;i<60; i++) {
     this.mins.push(String(i).padStart(2, '0'))
-    i++;
+    }
+    this.fillSelect("#mdateMin", this.mins)
   }
-  //alert(this.mins[0])
+
+  fillSelect(selectId :string, arr:any ){
+    const select = document.querySelector(selectId);
+    for (let i = 0; i < arr.length; i++) {
+      let opt = document.createElement("option");
+      opt.value = arr[i]; //or i, depending on what you need to do
+      opt.innerHTML = arr[i]; 
+      select?.append(opt); //Chuck it into the dom here if you want
   }
+}
 
   
 

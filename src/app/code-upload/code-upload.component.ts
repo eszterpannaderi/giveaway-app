@@ -98,7 +98,7 @@ export class CodeUploadComponent implements OnInit {
             if (won) {
               Swal.fire({
                 icon: 'success',
-                title: 'Gratulálunk! Nyertél!',
+                title: 'Gratulálunk! Nyert!',
               });
             } else {
               Swal.fire({

@@ -2,7 +2,7 @@
 <div class="container col-12 col-sm-8 col-md-6 col-lg-4">
   <div class="title text-center display-5 mb-3">Regisztráció</div>
   <div class="content">
-    <form action="">
+    <form #userPost="ngForm" (ngSubmit)="postUser(userPost.value)">
       <label for="emailAdress" class="form-label">E-mail cím:</label>
       <div class="input-group input-group-default">
         <span class="input-group-text" id="emailAdress"
@@ -22,10 +22,11 @@
           readonly
           name="email"
           type="email"
-          value="{{ email }}"
           class="form-control"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-lg"
+          [(ngModel)]="email"
+          ngModel
         />
       </div>
       <label for="promotionCode" class="form-label mt-3">Név:</label>
@@ -44,9 +45,10 @@
             /></svg
         ></span>
         <input
+          ngModel
           [(ngModel)]="username"
           placeholder="Kiss Júlia"
-          name="code"
+          name="name"
           type="text"
           class="form-control"
           aria-label="Sizing example input"
@@ -72,12 +74,9 @@
         <p *ngIf="error">Adja meg a nevét és fogadja el a szabályzatot!</p>
       </div>
       <div class="mt-4 text-center">
-        <input
-          type="button"
-          class="btn btn-outline-dark mx-auto"
-          value="Regisztráció"
-          (click)="registUser()"
-        />
+        <button type="submit" class="btn btn-outline-dark mx-auto">
+          Regisztráció
+        </button>
       </div>
     </form>
   </div>

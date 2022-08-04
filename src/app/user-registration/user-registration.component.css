@@ -1,11 +1,12 @@
 .container{
-    background-color: rgb(180, 223, 204);
+    background-color: rgb(180, 217, 223);
     color:black;
     padding-bottom:5rem;
     padding-top:3rem;
     padding-left:3rem;
     padding-right:3rem;
     border-radius: 10pt;
+    height:80vh;
    
 
 }

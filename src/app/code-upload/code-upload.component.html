@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="code-upload.component.css" />
 <app-user-registration
   *ngIf="registrationNeeded"
-  [email]="model.emailAdress"
+  [email]="model.email"
   [registrationNeeded]="registrationNeeded"
 ></app-user-registration>
 <div
@@ -27,7 +27,7 @@
             /></svg
         ></span>
         <input
-          [(ngModel)]="model.emailAdress"
+          [(ngModel)]="model.email"
           name="email"
           type="email"
           class="form-control"
@@ -116,7 +116,7 @@
           type="button"
           class="btn btn-outline-light mx-auto"
           value="Kódfeltöltés"
-          (click)="submitForm()"
+          (click)="submitForm(model)"
         />
       </div>
     </form>

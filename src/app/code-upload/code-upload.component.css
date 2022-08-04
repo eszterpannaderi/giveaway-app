@@ -15,7 +15,7 @@
     padding-top:20px;
     text-align:center;
     color:rgb(245, 158, 158);
-    font-weight:bold;
+
 }
 .input-group-text{
     width:2.5rem;
@@ -26,4 +26,8 @@
 }
 .form-control{
     text-align: center;
+}
+span{
+    width:33%;
+    text-align:center;
 }

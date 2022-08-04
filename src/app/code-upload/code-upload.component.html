@@ -68,9 +68,7 @@
       <label for="datetimepicker" class="form-label mt-3"
         >Vásárlás időpontja:</label
       >
-      <div class="dates">
-        <span>Dátum:</span><span>Óra:</span><span>Perc:</span>
-      </div>
+
       <div class="row">
         <div class="form-group">
           <div class="input-group">
@@ -105,19 +103,22 @@
               </option>
             </select>
           </div>
+          <div class="dates mt-1">
+            <span>dátum</span><span>óra</span><span>perc</span>
+          </div>
         </div>
       </div>
-
-      <div class="validationError">
-        <p *ngIf="error">Hibás/hiányos adat(ok)!</p>
-      </div>
-      <div class="mt-3 text-center">
+      <div class="mt-4 text-center">
         <input
           type="button"
           class="btn btn-outline-light mx-auto"
           value="Kódfeltöltés"
           (click)="submitForm(model)"
         />
+      </div>
+
+      <div class="validationError">
+        <p *ngIf="error">Hibás/hiányos adat(ok)!</p>
       </div>
     </form>
   </div>

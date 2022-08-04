@@ -69,14 +69,14 @@
           Elolvastam és elfogadom a játékszabályzatot
         </label>
       </div>
-
-      <div class="validationError">
-        <p *ngIf="error">Adja meg a nevét és fogadja el a szabályzatot!</p>
-      </div>
-      <div class="mt-4 text-center">
+      <div class="mt-5 text-center">
         <button type="submit" class="btn btn-outline-dark mx-auto">
           Regisztráció
         </button>
+
+        <div class="validationError mt-3">
+          <p *ngIf="error">Adja meg a nevét és fogadja el a szabályzatot!</p>
+        </div>
       </div>
     </form>
   </div>

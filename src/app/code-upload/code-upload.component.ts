@@ -92,9 +92,8 @@ export class CodeUploadComponent implements OnInit {
         .subscribe(
           (result) => {
             console.log(result);
-            const data = JSON.stringify(result);
-            console.log(data);
-            let won = data.includes('true', 29);
+            const strResult = JSON.stringify(result);
+            let won = strResult.includes(`"won":true`);
             if (won) {
               Swal.fire({
                 icon: 'success',
@@ -139,12 +138,12 @@ export class CodeUploadComponent implements OnInit {
   }
 
   //   fillSelect(selectId :string, arr:any ){
-  //     const select = document.querySelector(selectId);
+  //     const select = document.querySelector(selectId)
   //     for (let i = 0; i < arr.length; i++) {
-  //       let opt = document.createElement("option");
-  //       opt.value = arr[i];
-  //       opt.innerHTML = arr[i];
-  //       select?.append(opt);
+  //       let opt = document.createElement("option")
+  //       opt.value = arr[i]
+  //       opt.innerHTML = arr[i]
+  //       select?.append(opt)
 
   //   }
   // }

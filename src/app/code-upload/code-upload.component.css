@@ -1,12 +1,13 @@
 .container{
     background-color: rgb(64, 69, 87);
     color:white;
+    margin-top:12.5vh;
     padding-bottom:5rem;
     padding-top:3rem;
     padding-left:3rem;
     padding-right:3rem;
     border-radius: 10pt;
-    height:80vh;
+    height:75vh;
    
 
 }

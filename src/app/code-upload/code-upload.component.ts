@@ -140,17 +140,6 @@ export class CodeUploadComponent implements OnInit {
       this.mins.push(String(i).padStart(2, '0'));
     }
   }
-
-  //   fillSelect(selectId :string, arr:any ){
-  //     const select = document.querySelector(selectId)
-  //     for (let i = 0; i < arr.length; i++) {
-  //       let opt = document.createElement("option")
-  //       opt.value = arr[i]
-  //       opt.innerHTML = arr[i]
-  //       select?.append(opt)
-
-  //   }
-  // }
 }
 
 export interface UploadInterface {

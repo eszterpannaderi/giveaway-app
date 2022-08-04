@@ -66,6 +66,7 @@ export class UserRegistrationComponent implements OnInit {
           },
           (err) => {
             return;
+            this.error = true;
           }
         );
     }

@@ -84,36 +84,40 @@ export class CodeUploadComponent implements OnInit {
         this.mdateDay + ' ' + this.mdateHour + ':' + this.mdateMin;
       console.warn(model);
 
-      this.http
-        .post(
+      (async () => {
+        const rawResponse = await fetch(
           'https://ncp-dummy.staging.moonproject.io/api/deri-eszter/code/upload',
-          model
-        )
-        .subscribe(
-          (result) => {
-            console.log(result);
-            const strResult = JSON.stringify(result);
-            let won = strResult.includes(`"won":true`);
-            if (won) {
-              Swal.fire({
-                icon: 'success',
-                title: 'Gratulálunk! Nyert!',
-              });
-            } else {
-              Swal.fire({
-                icon: 'error',
-                title: 'Sajnáljuk, most nem nyert',
-              });
-            }
-          },
-          (err) => {
-            Swal.fire({
-              title: 'Ehhez az e-mailhez még nem tartozik felhasználó',
-              text: 'Kérem regisztráljon!',
-            });
-            this.registrationNeeded = true;
+          {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(model),
           }
         );
+        const content = await rawResponse.json();
+        if (!rawResponse.ok) {
+          Swal.fire({
+            title: 'Ehhez az e-mailhez még nem tartozik felhasználó',
+            text: 'Kérem regisztráljon!',
+          });
+          this.registrationNeeded = true;
+          return;
+        }
+        console.log(content.data.won);
+        if (content.data.won) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Gratulálunk! Nyert!',
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Sajnáljuk, most nem nyert',
+          });
+        }
+      })();
     }
   }
 
